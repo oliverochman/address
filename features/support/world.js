@@ -25,14 +25,12 @@ class AddressBookWorld {
     expect(actualContent).to.be.eq(expectedContent)
   }
 
-  async sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
-    }
+  async clickOnAddContactBtn() {
+    const btnSelector = '.add-contact'
+    await this.page.waitForSelector(btnSelector)
+    await this.page.click(btnSelector)
   }
+
 }
 
 setWorldConstructor(AddressBookWorld)

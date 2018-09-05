@@ -13,9 +13,8 @@ After(async function() {
 })
 
 When('I click {string}', async function(string) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending'
-  })
+    return await this.clickOnAddContactBtn()
+})
   
   Then('I fill in {string} with {string}', async function(string, string2) {
     // Write code here that turns the phrase above into concrete actions
