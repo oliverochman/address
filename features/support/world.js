@@ -25,8 +25,8 @@ class AddressBookWorld {
     expect(actualContent).to.be.eq(expectedContent)
   }
 
-  async clickOnAddContactBtn() {
-    const btnSelector = '.add-contact'
+  async clickOnButton(btnName) {
+    const btnSelector = this.btnSelectorFromName(btnName.toLowerCase())
     await this.page.waitForSelector(btnSelector)
     await this.page.click(btnSelector)
   }
@@ -38,6 +38,19 @@ class AddressBookWorld {
     await this.inputElement.type(content)
   }
 
+  btnSelectorFromName(btnName) {
+    switch (btnName) {
+      case 'add contact':
+        return '.add-contact'
+        break
+      case 'save contact':
+        return '.save-contact'
+        break
+      default:
+        throw `${btnName} button is not defined`
+        break
+    }
+  }
 }
 
 setWorldConstructor(AddressBookWorld)
